@@ -10,12 +10,13 @@ function getComputerChoice() {
 
 function getPlayerChoice(playerResponse = prompt("Rock, Paper, Scissors! Make your Decision!?")) {
      let playerChoice = correctString(playerResponse);
-     if playerChoice == ("Rock" || "Paper" || "Scissors") {
-        
+     if (playerChoice === ("Rock" || "Paper" || "Scissors")) {
+        return playerChoice;
      }
 
      else {
-        getPlayerChoice(playerResponse = prompt("Thats not an Option, Try Again!"))
+        getPlayerChoice(playerResponse = prompt("Thats not an Option, Try Again!"));
+        return playerResponse;
      }
     return playerChoice;
 }
