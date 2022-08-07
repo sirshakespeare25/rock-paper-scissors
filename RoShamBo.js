@@ -1,16 +1,17 @@
 const test = "hello World!";
-const computerSelection = getComputerChoice();
+const computerChoice = getComputerChoice();
+const playerChoice = getPlayerChoice();
+
 
 function getComputerChoice() {
     const computerOptions = ["Rock" , "Paper" , "Scissors"];
     let randomNumber = (Math.floor(Math.random()*3));
-    let finalChoice = computerOptions[randomNumber];
-    return finalChoice;
+    return computerOptions[randomNumber];   
 };
 
 function getPlayerChoice(playerResponse = prompt("Rock, Paper, Scissors! Make your Decision!?")) {
      let playerChoice = correctString(playerResponse);
-     if (playerChoice === ("Rock" || "Paper" || "Scissors")) {
+     if (playerChoice === "Rock" || playerChoice === "Paper" || playerChoice === "Scissors") {
         return playerChoice;
      }
 
@@ -29,6 +30,12 @@ function correctString(word) {
 }
 
 
-function playRound(getComputerChoice , getPlayerChoice) {
+function playRound(playerChoice, computerChoice) {
+if (playerChoice == computerChoice) {
+    alert(playerChoice + ' is the same as ' + computerChoice)
+}
 
+else if ((playerChoice === "Rock" && computerChoice === 'Scissors') || (playerChoice === 'Paper' && computerChoice === 'Rock') || (playerChoice === 'Scissors' && computerChoice === 'Paper')) {
+    alert("You win! " + (playerChoice) + ' beats ' (computerChoice) + '!');
+}
 };
