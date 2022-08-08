@@ -1,6 +1,5 @@
 const test = "hello World!";
-const computerChoice = getComputerChoice();
-const playerChoice = getPlayerChoice();
+
 
 
 function getComputerChoice() {
@@ -30,12 +29,23 @@ function correctString(word) {
 }
 
 
-function playRound(playerChoice, computerChoice) {
-if (playerChoice == computerChoice) {
-    alert(playerChoice + ' is the same as ' + computerChoice)
+function playRound() {
+    const computerChoice = getComputerChoice();
+    const playerChoice = getPlayerChoice();
+    if (playerChoice == computerChoice) {
+        alert(playerChoice + ' is the same as ' + computerChoice)
 }
 
-else if ((playerChoice === "Rock" && computerChoice === 'Scissors') || (playerChoice === 'Paper' && computerChoice === 'Rock') || (playerChoice === 'Scissors' && computerChoice === 'Paper')) {
-    alert("You win! " + (playerChoice) + ' beats ' (computerChoice) + '!');
+    else if ((playerChoice === "Rock" && computerChoice === 'Scissors') || (playerChoice === 'Paper' && computerChoice === 'Rock') || (playerChoice === 'Scissors' && computerChoice === 'Paper')) {
+        alert("You win! " + (playerChoice) + " beats " + (computerChoice) + "!");
 }
-};
+
+    else {
+        alert("You lose!" + (computerChoice) + " beats " + (playerChoice) + "!")
+}
+}
+
+
+
+
+;
