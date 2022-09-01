@@ -1,5 +1,5 @@
-const test = "hello World!";
 let score = 0;
+const test = "hello World!";
 
 
 
@@ -9,9 +9,9 @@ function getComputerChoice() {
     return computerOptions[randomNumber];   
 };
 
-function getPlayerChoice(playerResponse = prompt("Rock, Paper, Scissors! Make your Decision!?")) {
-     let playerChoice = correctString(playerResponse);
-     if (playerChoice === "Rock" || playerChoice === "Paper" || playerChoice === "Scissors") {
+function getPlayerChoice(playerResponse) {
+    let playerChoice = correctString(playerResponse);
+    if (playerChoice === "Rock" || playerChoice === "Paper" || playerChoice === "Scissors") {
         return playerChoice;
      }
 
@@ -19,7 +19,6 @@ function getPlayerChoice(playerResponse = prompt("Rock, Paper, Scissors! Make yo
         getPlayerChoice(playerResponse = prompt("Thats not an Option, Try Again!"));
         return playerResponse;
      }
-    return playerChoice;
 };
 
 function correctString(word) {
@@ -30,9 +29,9 @@ function correctString(word) {
 };
 
 
-function playRound() {
+function playRound(input) {
     const computerChoice = getComputerChoice();
-    const playerChoice = getPlayerChoice();
+    const playerChoice = getPlayerChoice(input);
     if (playerChoice == computerChoice) {
         alert(playerChoice + ' is the same as ' + computerChoice);
         playRound();
@@ -72,4 +71,13 @@ function scoreBoard(finalScore) {
     }
 };
 
-playGame();
+function testRun() {
+    console.log(button.id);
+};
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+     playRound(button.id)   
+    });
+});
