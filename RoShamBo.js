@@ -1,5 +1,11 @@
 let score = 0;
-const test = "hello World!";
+let playerScore = 0;
+let computerScore = 0;
+let result = document.getElementById('result');
+let computer = document.getElementById('computerScore');
+let player = document.getElementById('playerScore')
+
+
 
 
 
@@ -10,56 +16,34 @@ function getComputerChoice() {
 };
 
 function getPlayerChoice(playerResponse) {
-    let playerChoice = correctString(playerResponse);
+    let playerChoice = playerResponse;
     if (playerChoice === "Rock" || playerChoice === "Paper" || playerChoice === "Scissors") {
         return playerChoice;
      }
-
-     else {
-        getPlayerChoice(playerResponse = prompt("Thats not an Option, Try Again!"));
-        return playerResponse;
-     }
 };
-
-function correctString(word) {
-    let a = (word.slice(0,1));
-        b = (word.slice(1));
-        finalWord = (a.toUpperCase()+b.toLowerCase());
-    return finalWord;
-};
-
 
 function playRound(input) {
     const computerChoice = getComputerChoice();
     const playerChoice = getPlayerChoice(input);
     if (playerChoice == computerChoice) {
-        alert(playerChoice + ' is the same as ' + computerChoice);
-        playRound();
+        result.textContent = 'You Tied!';
+        return;
 }
 
     else if ((playerChoice === "Rock" && computerChoice === 'Scissors') || (playerChoice === 'Paper' && computerChoice === 'Rock') || (playerChoice === 'Scissors' && computerChoice === 'Paper')) {
-        alert("You win! " + (playerChoice) + " beats " + (computerChoice) + "!");
-        return true;
+        result.textContent = 'You Win!';
+        playerScore++;
+        player.innerText = (playerScore);
+        endGame(playerScore, computerScore);
+
 }
 
     else {
-        alert("You lose! " + (computerChoice) + " beats " + (playerChoice) + "!");
-        return false;
-}
-};
-
-function playGame() {
-    for (i = 0; i < 5; i++) {
-        if (playRound() === true) {
-            score++
-        }
-        else {
-            score--
-        }
-    };
-    
-    scoreBoard(score);
-};
+        result.textContent = 'You Lose!';
+        computerScore++;
+        computer.innerText = (computerScore);
+        endGame(playerScore, computerScore);
+}}; 
 
 function scoreBoard(finalScore) {
     if (Number(finalScore) > 0) {
@@ -71,13 +55,28 @@ function scoreBoard(finalScore) {
     }
 };
 
-function testRun() {
-    console.log(button.id);
-};
-
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
      playRound(button.id)   
     });
 });
+
+function endGame (playerScore, computerScore){
+if (playerScore >= 5) {
+    result.textContent = 'You won the game!';
+    computerScore = 0;
+    playerScore = 0;
+    computer.innerText = (computerScore);
+    player.innerText = (playerScore);    
+} else if (computerScore >= 5) {
+    result.innerText = 'You lost the game!';
+    computerScore = 0;
+    playerScore = 0;
+    computer.innerText = (computerScore);
+    player.innerText = (playerScore);
+}
+};
+
+
+
