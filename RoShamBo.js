@@ -1,9 +1,9 @@
 let score = 0;
-let playerScore = 0;
-let computerScore = 0;
 let result = document.getElementById('result');
 let computer = document.getElementById('computerScore');
 let player = document.getElementById('playerScore')
+let playerTotal = computer.innerText;
+let computerTotal = player.innerText;
 
 
 
@@ -25,6 +25,8 @@ function getPlayerChoice(playerResponse) {
 function playRound(input) {
     const computerChoice = getComputerChoice();
     const playerChoice = getPlayerChoice(input);
+    computerScore = computer.innerText;
+    playerScore = player.innerText
     if (playerChoice == computerChoice) {
         result.textContent = 'You Tied!';
         return;
@@ -45,16 +47,6 @@ function playRound(input) {
         endGame(playerScore, computerScore);
 }}; 
 
-function scoreBoard(finalScore) {
-    if (Number(finalScore) > 0) {
-        alert("You won this Time!")
-    }
-
-    else {
-        alert("Better luck next Time!")
-    }
-};
-
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -65,16 +57,14 @@ buttons.forEach((button) => {
 function endGame (playerScore, computerScore){
 if (playerScore >= 5) {
     result.textContent = 'You won the game!';
-    computerScore = 0;
-    playerScore = 0;
-    computer.innerText = (computerScore);
-    player.innerText = (playerScore);    
+    computer.innerText = ('0');
+    player.innerText = ('0');    
 } else if (computerScore >= 5) {
     result.innerText = 'You lost the game!';
     computerScore = 0;
     playerScore = 0;
-    computer.innerText = (computerScore);
-    player.innerText = (playerScore);
+    computer.innerText = ('0');
+    player.innerText = ('0');
 }
 };
 
